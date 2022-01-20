@@ -19,18 +19,16 @@ import { QUERY_PRODUCTS } from "../utils/queries";
 
 
 function Detail() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
+
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
-
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
-  const cart = useSelector(state => state.cart);
     
-
   useEffect(() => {
     // already in global store
     if (products.length) {
